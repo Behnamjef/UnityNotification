@@ -1,5 +1,5 @@
+using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 using Unity.Notifications.Android;
 using UnityEngine;
 
@@ -9,9 +9,8 @@ namespace MagicOwl.Notification
     {
         private const string NotificationID = "Awesome_Channel";
         [SerializeField] private List<NotificationModel> NotificationModels;
-        [SerializeField] private bool AutoClearNotifications;
 
-        void Start()
+        private void Start()
         {
             Initialize();
             ClearNotifications();
@@ -19,7 +18,8 @@ namespace MagicOwl.Notification
 
         private void Initialize()
         {
-            Debug.Log("notification. Initialize.");
+            Debug.Log("Initializing notification.");
+            
             var channel = new AndroidNotificationChannel()
             {
                 Id = NotificationID,
@@ -33,9 +33,8 @@ namespace MagicOwl.Notification
         }
 
 
-        public void SendNotifications()
-        {            Debug.Log("notification. send notifications.");
-
+        private void SendNotifications()
+        {
             ClearNotifications();
             foreach (var model in NotificationModels)
             {
@@ -45,28 +44,35 @@ namespace MagicOwl.Notification
 
         private void SendNotification(NotificationModel model)
         {
-            Debug.Log($"notification. send {JsonConvert.SerializeObject(model)}.");
 
             var notification = new AndroidNotification
             {
-                Title = model.Title,
+                Title = Application.productName,
                 Text = model.Text,
                 ShowTimestamp = true,
-                FireTime = System.DateTime.Now.AddSeconds(model.DelaySecond)
+                FireTime = DateTime.Now.AddSeconds(model.DelaySecond)
             };
+            
+            Debug.Log($"Send notification: {notification.Title}----{notification.Text}");
 
             AndroidNotificationCenter.SendNotification(notification, NotificationID);
         }
 
         private void ClearNotifications()
         {
-            Debug.Log($"notification. clear notifications.");
-
-            if (!AutoClearNotifications) return;
+            Debug.Log($"Clear previous notifications.");
 
             AndroidNotificationCenter.CancelAllDisplayedNotifications();
             AndroidNotificationCenter.CancelAllScheduledNotifications();
             AndroidNotificationCenter.CancelAllNotifications();
+        }
+
+        private void OnApplicationFocus(bool hasFocus)
+        {
+            if(!hasFocus)
+                SendNotifications();
+            else
+                ClearNotifications();
         }
     }
 }

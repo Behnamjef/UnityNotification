@@ -10,7 +10,6 @@ sysinfo.txt
 *.stackdump
 /Assets/AssetStoreTools*
 *.apk
-*.unitypackage
 [Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
