@@ -61,6 +61,5 @@ Corridor/Library/metadata/
 # Builds #
 # ====== #
 *.apk
-*.unitypackage
 *.symbols.zip
 
