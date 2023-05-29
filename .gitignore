@@ -1,0 +1,67 @@
+# =============== #
+# Unity generated #
+# =============== #
+[Tt]emp/
+[Oo]bj/
+[Bb]uild
+/[Bb]uilds/
+/[Ll]ibrary/
+sysinfo.txt
+*.stackdump
+/Assets/AssetStoreTools*
+*.apk
+*.unitypackage
+[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+
+# === #
+# IDE #
+# === #
+/.idea/
+[Ee]xported[Oo]bj/
+.vs/
+/*.userprefs
+/*.csproj
+/*.pidb
+*.pidb.meta
+/*.suo
+/*.sln*
+/*.user
+/*.unityproj
+/*.booproj
+.consulo/
+/*.tmp
+/*.svd
+[Aa]ssets/Plugins/Editor/JetBrains*
+ProjectSettings/RiderScriptEditorPersistedState.asset
+
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store*
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+[Tt]humbs.db
+[Dd]esktop.ini
+Corridor/Library/ShaderCache/
+Corridor/Library/metadata/
+
+# ============================ #
+# Never ignore Asset meta data #
+# ============================ #
+!/[Aa]ssets/**/*.meta
+
+# ================== #
+# TextMesh Pro files #
+# ================== #
+[Aa]ssets/TextMesh*Pro/
+
+# ====== #
+# Builds #
+# ====== #
+*.apk
+*.unitypackage
+*.symbols.zip
+
