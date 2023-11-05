@@ -10,7 +10,6 @@ namespace MagicOwl.Notification
     {
         private const string NotificationID = "Awesome_Channel";
         private const string PermissionID = "android.permission.POST_NOTIFICATIONS";
-        
         [SerializeField] private List<NotificationModel> NotificationModels;
 
         private void Start()
@@ -69,6 +68,13 @@ namespace MagicOwl.Notification
             AndroidNotificationCenter.CancelAllDisplayedNotifications();
             AndroidNotificationCenter.CancelAllScheduledNotifications();
             AndroidNotificationCenter.CancelAllNotifications();
+        }
+
+        private void OnApplicationFocus(bool hasFocus)
+        {
+            ClearNotifications();
+            if(!hasFocus)
+                SendNotifications();
         }
 
         private void OnApplicationQuit()
